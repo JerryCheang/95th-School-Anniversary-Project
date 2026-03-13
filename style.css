@@ -395,6 +395,7 @@ main.container#home{
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .btn:hover{
@@ -1775,6 +1776,7 @@ main#home{
   top: -120px;
   right: -120px;
   filter: blur(10px);
+  pointer-events: none;
 }
 
 .welcome::after{
@@ -1787,6 +1789,7 @@ main#home{
   bottom: -100px;
   left: -100px;
   filter: blur(10px);
+  pointer-events: none;
 }
 
 .welcome-left{
@@ -2014,4 +2017,6 @@ padding:80px 8vw;
 
 .welcome-content{
 max-width:700px;
+position:relative;
+z-index:2;
 }

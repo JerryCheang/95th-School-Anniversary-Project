@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("js-ready");
 
-  const btnWorks = document.getElementById("btnWorks");
-  const btnAbout = document.getElementById("btnAbout");
   const header = document.querySelector(".header");
 
   const getHeaderOffset = () => {
@@ -16,28 +14,24 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: Math.max(targetY, 0), behavior: "smooth" });
   };
 
-  if (btnWorks) {
-    btnWorks.addEventListener("click", () => {
-      const target = document.querySelector("#gallery");
-      if (!target) return;
-      smoothScrollToElement(target);
-      history.replaceState(null, "", "#gallery");
-    });
-  }
-
-  if (btnAbout) {
-    btnAbout.addEventListener("click", () => {
-      const target = document.querySelector("#about");
-      if (!target) return;
-      smoothScrollToElement(target);
-      history.replaceState(null, "", "#about");
-    });
-  }
-
   document.querySelectorAll(".nav-item").forEach((anchor) => {
     anchor.addEventListener("click", (event) => {
       const href = anchor.getAttribute("href");
       if (!href || !href.startsWith("#")) return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      event.preventDefault();
+      smoothScrollToElement(target);
+      history.replaceState(null, "", href);
+    });
+  });
+
+  document.querySelectorAll('a.btn[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      const href = anchor.getAttribute("href");
+      if (!href) return;
 
       const target = document.querySelector(href);
       if (!target) return;
