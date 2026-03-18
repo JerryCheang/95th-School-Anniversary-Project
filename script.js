@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const sectionIds = ["home", "about", "gallery"];
+  const sectionIds = ["home", "about", "gallery", "vote"];
   const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
   const navItems = Array.from(document.querySelectorAll(".nav-item"));
 
