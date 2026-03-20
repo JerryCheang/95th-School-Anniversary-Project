@@ -80,6 +80,18 @@ document.addEventListener("DOMContentLoaded", () => {
     setActiveNav(bestSection.id);
   };
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const backToTopButton = document.getElementById("backToTop");
+
+  if (backToTopButton) {
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+      });
+    });
+  }
+
   let ticking = false;
   window.addEventListener("scroll", () => {
     if (ticking) return;
@@ -92,8 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("resize", updateActiveOnScroll);
   updateActiveOnScroll();
-
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const setupAmbientFx = () => {
     const canvas = document.getElementById("fxCanvas");

@@ -41,6 +41,40 @@ a{ color: inherit; -webkit-tap-highlight-color: transparent; }
 ========================= */
 html{ scroll-behavior: smooth; }
 
+.back-to-top{
+  position: fixed !important;
+  inset: auto clamp(16px, 3vw, 28px) clamp(16px, 3vw, 28px) auto;
+  right: clamp(16px, 3vw, 28px) !important;
+  bottom: clamp(16px, 3vw, 28px) !important;
+  left: auto !important;
+  top: auto !important;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--eco), var(--sky));
+  box-shadow: 0 16px 30px rgba(38, 97, 124, 0.24);
+  transform: translateY(0);
+  transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
+  z-index: 140;
+}
+
+.back-to-top:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 20px 36px rgba(38, 97, 124, 0.32);
+}
+
+.back-to-top:focus-visible{
+  transform: translateY(0);
+}
+
 body{
   font-family: "Segoe UI", Arial, sans-serif;
   color: var(--text);
@@ -1188,14 +1222,14 @@ main#home{
   border-radius: 16px;
   overflow: hidden;
   background: #fff;
-  min-height: 760px;
+  min-height: auto;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
 }
 
 .poll-frame{
   width: 100%;
-  min-height: 760px;
-  height: 760px;
+  min-height: auto;
+  height: auto;
   border: 0;
   display: block;
   background: #fff;
@@ -1208,12 +1242,12 @@ main#home{
 }
 
 .welcome-right .poll-frame-wrap{
-  min-height: 680px;
+  min-height: auto;
 }
 
 .welcome-right .poll-frame{
-  min-height: 680px;
-  height: 680px;
+  min-height: auto;
+  height: auto;
 }
 
 .group-media-card{
@@ -1465,8 +1499,8 @@ main#home{
 
   .poll-frame-wrap,
   .poll-frame{
-    min-height: 620px;
-    height: 620px;
+    min-height: auto;
+    height: auto;
   }
 
   .video-frame{
@@ -3168,4 +3202,17 @@ main#home{
 #media .group-media-card:nth-child(6) .video-frame{
   border-color: rgba(127, 106, 59, 0.18);
   background: linear-gradient(180deg, #2c2416 0%, #171209 100%);
+}
+
+@media (max-width: 640px){
+  .back-to-top{
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+    inset: auto 14px 14px auto;
+    right: 14px !important;
+    bottom: 14px !important;
+    left: auto !important;
+    top: auto !important;
+  }
 }
